@@ -84,5 +84,5 @@ With LuhaRide, taxi unions can **post rides**, and users can **check available r
 
 ---
 
-📫 Want to collaborate? Reach out at [rahulpanwar.dev@gmail.com](mailto:helprahulpanwar@gmail.com)
+📫 Want to collaborate? Reach out at (mailto:helprahulpanwar@gmail.com)
 
