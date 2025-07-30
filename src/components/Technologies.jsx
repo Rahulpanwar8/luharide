@@ -8,6 +8,7 @@ const Technologies = () => {
   const [date, setDate] = useState("");
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [hasSearched, setHasSearched] = useState(false);
 
   const [fromSug, setFromSug] = useState([]);
   const [toSug, setToSug] = useState([]);
@@ -43,6 +44,7 @@ const Technologies = () => {
 
     try {
       setLoading(true);
+      setHasSearched(true);
       const res = await axios.post("https://luharide.in/api/search_ride.php", {
         from,
         to,
@@ -70,14 +72,13 @@ const Technologies = () => {
     "px-4 py-2 hover:bg-cyan-500/10 cursor-pointer text-white font-medium";
 
   return (
-   <div className="min-h-[120vh] w-full bg-neutral-950 text-white flex flex-col items-center px-2 sm:px-4 py-32">
-
+    <div className="min-h-screen w-full bg-neutral-950 text-white flex flex-col items-center px-4 py-12">
       {/* Title */}
       <motion.h2
         whileInView={{ opacity: 1, y: 0 }}
         initial={{ opacity: 0, y: -40 }}
         transition={{ duration: 0.6 }}
-        className="text-center text-3xl sm:text-4xl font-extrabold mb-10 bg-gradient-to-r from-cyan-400 to-fuchsia-500 bg-clip-text text-transparent"
+        className="text-center text-3xl sm:text-4xl font-extrabold mt-10 mb-6 bg-gradient-to-r from-cyan-400 to-fuchsia-500 bg-clip-text text-transparent"
       >
         Find a Ride
       </motion.h2>
@@ -87,7 +88,7 @@ const Technologies = () => {
         initial={{ opacity: 0, y: 20, scale: 0.98 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ duration: 0.4 }}
-        className="w-full max-w-4xl space-y-6 bg-[#1f1f25] border border-stone-900 shadow-xl rounded-2xl p-10 sm:p-12"
+        className="w-full max-w-3xl space-y-4 bg-white/5 backdrop-blur-xl border border-white/10 shadow-2xl rounded-2xl p-4 sm:p-6 mt-8"
       >
         {/* From & To */}
         <div className="flex flex-col sm:flex-row gap-4">
@@ -150,15 +151,15 @@ const Technologies = () => {
         <div>
           <label className="mb-1 block text-sm font-semibold text-white/80">Date</label>
           <input
-           type="date"
-           value={date}
+            type="date"
+            value={date}
             onChange={(e) => setDate(e.target.value)}
-            min={new Date().toISOString().split("T")[0]}  // ✅ prevents selecting past dates
-              className={inputClass}
-                 />
+            min={new Date().toISOString().split("T")[0]}
+            className={inputClass}
+          />
         </div>
 
-        {/* Search Button Only */}
+        {/* Search Button */}
         <motion.button
           whileTap={{ scale: 0.97 }}
           onClick={handleSearch}
@@ -171,59 +172,60 @@ const Technologies = () => {
 
       {/* Results */}
       <div ref={resultRef} className="mt-10 w-full max-w-4xl space-y-4">
-        {results.length === 0 ? (
+        {hasSearched && results.length === 0 ? (
           <p className="text-center text-gray-400">No results found.</p>
         ) : (
-          <>
-            <p className="text-sm text-gray-400 mb-2">
-              Showing <span className="text-cyan-400 font-semibold">{results.length}</span> results
-            </p>
+          results.length > 0 && (
+            <>
+              <p className="text-sm text-gray-400 mb-2">
+                Showing <span className="text-cyan-400 font-semibold">{results.length}</span> results
+              </p>
 
-            {results.map((ride) => (
-              <motion.div
-                key={ride.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.35 }}
-                className="bg-white/5 backdrop-blur-xl border border-white/10 p-4 sm:p-5 rounded-2xl shadow-lg"
-              >
-                <h3 className="text-lg font-bold text-white">{ride.name}</h3>
-                <p className="text-white/90">
-                  <strong>From:</strong> {ride.from_place} &nbsp;|&nbsp; <strong>To:</strong> {ride.to_place}
-                </p>
-                <p className="text-white/90">
-                  <strong>Date:</strong> {ride.ride_date} &nbsp;|&nbsp; <strong>Time:</strong> {ride.ride_time}
-                </p>
-                <p className="text-white/90">
-                  <strong>Vehicle:</strong> {ride.vehicle_number || "N/A"}
-                </p>
+              {results.map((ride) => (
+                <motion.div
+                  key={ride.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.35 }}
+                  className="bg-white/5 backdrop-blur-xl border border-white/10 p-4 sm:p-5 rounded-2xl shadow-lg"
+                >
+                  <h3 className="text-lg font-bold text-white">{ride.name}</h3>
+                  <p className="text-white/90">
+                    <strong>From:</strong> {ride.from_place} &nbsp;|&nbsp; <strong>To:</strong> {ride.to_place}
+                  </p>
+                  <p className="text-white/90">
+                    <strong>Date:</strong> {ride.ride_date} &nbsp;|&nbsp; <strong>Time:</strong> {ride.ride_time}
+                  </p>
+                  <p className="text-white/90">
+                    <strong>Vehicle:</strong> {ride.vehicle_number || "N/A"}
+                  </p>
 
-           <div className="mt-3 flex flex-wrap items-center gap-4 text-sm">
-             {ride.contact_number && (
-             <a
-            href={`tel:${ride.contact_number}`}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-emerald-400/20 hover:bg-emerald-300/30 text-emerald-200 font-semibold shadow-sm transition duration-300"
-             >
-                📞 <span className="underline">Call</span>
-            </a>
-              )}
+                  <div className="mt-3 flex flex-wrap items-center gap-4 text-sm">
+                    {ride.contact_number && (
+                      <a
+                        href={`tel:${ride.contact_number}`}
+                        className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-emerald-400/20 hover:bg-emerald-300/30 text-emerald-200 font-semibold shadow-sm transition duration-300"
+                      >
+                        📞 <span className="underline">Call</span>
+                      </a>
+                    )}
 
-              {ride.whatsapp_number && (
-               <a
-               href={`https://wa.me/${ride.whatsapp_number}`}
-             target="_blank"
-             rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-lime-300/20 hover:bg-lime-200/30 text-lime-200 font-semibold shadow-sm transition duration-300"
-             >
-               🟢 <span className="underline">WhatsApp</span>
-              </a>
-            )}
-            </div>
-
-              </motion.div>
-            ))}
-          </>
+                    {ride.whatsapp_number && (
+                      <a
+                        href={`https://wa.me/${ride.whatsapp_number}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-lime-300/20 hover:bg-lime-200/30 text-lime-200 font-semibold shadow-sm transition duration-300"
+                      >
+                        🟢 <span className="underline">WhatsApp</span>
+                      </a>
+                    )}
+                  </div>
+                </motion.div>
+              ))}
+            </>
+          )
         )}
       </div>
     </div>

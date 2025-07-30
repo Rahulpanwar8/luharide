@@ -22,7 +22,7 @@ const PROJECTS = [
       "Daily route pr chalne wali gadi ko ride-sharing ke liye promote karein. Commuters tak easily pahunch banayein.",
   },
   {
-    title: "📞 Ad Lagane ke liye Contact Karein - 7060618851",
+    title: "📞 Ad Lagane ke liye Contact Karein",
     description:
       "Kisi bhi type ke vahan ka ad lagane ke liye contact karein. Hamari team aapki madad karegi.",
   },
