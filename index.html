@@ -5,6 +5,344 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>LuhaRide – Book Ride</title>
+    <!-- Tailwind CSS CDN for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- JSON-LD for SEO -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "TaxiService",
+        "name": "LuhaRide – Uttarakhand Taxi Union & Ride Sharing Platform",
+        "url": "https://luharide.in",
+        "description": "LuhaRide is a free, open-source platform connecting Uttarakhand taxi union drivers with passengers for shared and private rides. Book affordable taxis across all Uttarakhand districts including Purola, Barkot, Uttarkashi, Dehradun, Mussoorie, Rishikesh, Almora, Nainital, and famous destinations like Kedarnath, Badrinath, and Jim Corbett. Drivers list rides online, replacing offline methods, for easy ride booking.",
+        "inLanguage": "hi-IN",
+        "keywords": [
+          "Uttarakhand taxi union",
+          "taxi Purola",
+          "taxi Barkot",
+          "taxi Uttarkashi",
+          "taxi Naugaon",
+          "taxi Chamoli",
+          "taxi Almora",
+          "taxi Nainital",
+          "taxi Mussoorie",
+          "taxi Dehradun",
+          "taxi Rishikesh",
+          "taxi Kedarnath",
+          "taxi Badrinath",
+          "taxi Haridwar",
+          "taxi Auli",
+          "taxi Jim Corbett",
+          "taxi pahad",
+          "ride sharing Uttarakhand",
+          "book taxi Uttarakhand",
+          "shared taxi Uttarkashi",
+          "affordable taxi Purola",
+          "open source taxi platform"
+        ],
+        "provider": {
+          "@type": "Organization",
+          "name": "LuhaRide",
+          "logo": "https://luharide.in/assets/logo.png",
+          "sameAs": [
+            "https://www.instagram.com/luharide.in/",
+            "https://github.com/Rahulpanwar8/luharide"
+          ],
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+917060618851",
+            "contactType": "Customer Service",
+            "email": "luharide@gmail.com",
+            "areaServed": "IN",
+            "availableLanguage": ["Hindi", "English"]
+          }
+        },
+        "areaServed": [
+          {
+            "@type": "Place",
+            "name": "Purola",
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "30.8751",
+              "longitude": "78.0765"
+            }
+          },
+          {
+            "@type": "Place",
+            "name": "Barkot",
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "30.8086",
+              "longitude": "78.2056"
+            }
+          },
+          {
+            "@type": "Place",
+            "name": "Uttarkashi",
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "30.7299",
+              "longitude": "78.4350"
+            }
+          },
+          {
+            "@type": "Place",
+            "name": "Naugaon",
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "30.7792",
+              "longitude": "78.1435"
+            }
+          },
+          {
+            "@type": "Place",
+            "name": "Chamoli",
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "30.4065",
+              "longitude": "79.3163"
+            }
+          },
+          {
+            "@type": "Place",
+            "name": "Almora",
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "29.5926",
+              "longitude": "79.6529"
+            }
+          },
+          {
+            "@type": "Place",
+            "name": "Nainital",
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "29.3803",
+              "longitude": "79.4630"
+            }
+          },
+          {
+            "@type": "Place",
+            "name": "Mussoorie",
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "30.4591",
+              "longitude": "78.0667"
+            }
+          },
+          {
+            "@type": "Place",
+            "name": "Dehradun",
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "30.3165",
+              "longitude": "78.0322"
+            }
+          },
+          {
+            "@type": "Place",
+            "name": "Haridwar",
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "29.9457",
+              "longitude": "78.1642"
+            }
+          },
+          {
+            "@type": "Place",
+            "name": "Rishikesh",
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "30.0869",
+              "longitude": "78.2676"
+            }
+          },
+          {
+            "@type": "Place",
+            "name": "Bageshwar",
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "29.8372",
+              "longitude": "79.7714"
+            }
+          },
+          {
+            "@type": "Place",
+            "name": "Champawat",
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "29.3357",
+              "longitude": "80.0911"
+            }
+          },
+          {
+            "@type": "Place",
+            "name": "Pauri Garhwal",
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "30.1471",
+              "longitude": "78.7767"
+            }
+          },
+          {
+            "@type": "Place",
+            "name": "Pithoragarh",
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "29.5829",
+              "longitude": "80.2182"
+            }
+          },
+          {
+            "@type": "Place",
+            "name": "Rudraprayag",
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "30.2849",
+              "longitude": "78.9839"
+            }
+          },
+          {
+            "@type": "Place",
+            "name": "Tehri Garhwal",
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "30.3849",
+              "longitude": "78.4803"
+            }
+          },
+          {
+            "@type": "Place",
+            "name": "Udham Singh Nagar",
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "28.9875",
+              "longitude": "79.4123"
+            }
+          },
+          {
+            "@type": "Place",
+            "name": "Kedarnath",
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "30.7347",
+              "longitude": "79.0673"
+            }
+          },
+          {
+            "@type": "Place",
+            "name": "Badrinath",
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "30.7433",
+              "longitude": "79.4938"
+            }
+          },
+          {
+            "@type": "Place",
+            "name": "Auli",
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "30.5286",
+              "longitude": "79.5716"
+            }
+          },
+          {
+            "@type": "Place",
+            "name": "Jim Corbett",
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "29.5300",
+              "longitude": "78.7747"
+            }
+          },
+          {
+            "@type": "Place",
+            "name": "Har Ki Pauri",
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "29.9568",
+              "longitude": "78.1710"
+            }
+          },
+          {
+            "@type": "Place",
+            "name": "Valley of Flowers",
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "30.7278",
+              "longitude": "79.6051"
+            }
+          }
+        ],
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "INR",
+          "description": "Free platform for taxi union drivers to list rides and connect with passengers across Uttarakhand."
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.7",
+          "reviewCount": "150",
+          "bestRating": "5",
+          "worstRating": "1"
+        },
+        "additionalType": [
+          "WebApplication",
+          "SoftwareSourceCode"
+        ],
+        "applicationCategory": "TravelApplication",
+        "operatingSystem": "All",
+        "codeRepository": "https://github.com/Rahulpanwar8/luharide",
+        "programmingLanguage": {
+          "@type": "ComputerLanguage",
+          "name": "JavaScript"
+        },
+        "potentialAction": {
+          "@type": "ReserveAction",
+          "name": "Book a Taxi",
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "https://luharide.in/book",
+            "inLanguage": "hi-IN",
+            "actionPlatform": [
+              "http://schema.org/DesktopWebPlatform",
+              "http://schema.org/MobileWebPlatform",
+              "http://schema.org/AndroidPlatform",
+              "http://schema.org/IOSPlatform"
+            ]
+          },
+          "result": {
+            "@type": "Reservation",
+            "name": "Taxi Ride Reservation"
+          }
+        },
+        "breadcrumb": {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://luharide.in"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Book a Ride",
+              "item": "https://luharide.in/book"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Taxi Union Rides",
+              "item": "https://luharide.in/taxi-union"
+            }
+          ]
+        }
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>
