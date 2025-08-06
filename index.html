@@ -1,96 +1,70 @@
 <!doctype html>
-<html lang="en">
+<html lang="hi">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>LuhaRide – Book Ride</title>
-    <!-- JSON-LD for SEO (Optimized) -->
+    <link rel="icon" type="image/svg+xml" href="/luhaicon.svg" />
+    <title>LuhaRide: उत्तराखंड में फ्री टैक्सी और राइड शेयरिंग</title>
+
+    <!-- Basic SEO Meta Tags (Hindi + English) -->
+    <meta name="description" content="LuhaRide: उत्तरकाशी, पुरोला, नौगाँव, बड़कोट और देहरादून में मुफ्त राइड शेयरिंग टैक्सी बुक करें। बिना ऐप और बिना कमीशन के।" />
+    <meta name="keywords" content="उत्तराखंड टैक्सी, Purula टैक्सी, Barkot taxi union, नौगाँव टैक्सी, देहरादून टैक्सी सेवा, Uttarkashi ride share, Char Dham Yatra taxi" />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="LuhaRide" />
+    <meta name="language" content="hi, en" />
+
+    <!-- Open Graph for better social preview -->
+    <meta property="og:title" content="LuhaRide - उत्तराखंड में मुफ्त टैक्सी सेवा" />
+    <meta property="og:description" content="उत्तरकाशी से देहरादून तक यात्रा करें बिना किसी कमीशन के। पुरोला, नौगाँव, बड़कोट सहित।" />
+    <meta property="og:image" content="https://luharide.in/assets/projects/luharide-banner.jpg" />
+    <meta property="og:url" content="https://luharide.in" />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter Card (for SEO and search snippets) -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="LuhaRide - उत्तराखंड की फ्री टैक्सी सेवा" />
+    <meta name="twitter:description" content="Purula, Barkot, Naugaon से देहरादून तक मुफ्त टैक्सी और राइड शेयर करें।" />
+    <meta name="twitter:image" content="https://luharide.in/assets/projects/luharide-banner.jpg" />
+
+    <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "TaxiService",
-        "name": "LuhaRide – Uttarakhand Taxi Union & Ride Sharing Platform",
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "LuhaRide",
+      "url": "https://luharide.in",
+      "applicationCategory": "TravelApplication",
+      "inLanguage": ["hi-IN", "en-IN"],
+      "description": "उत्तराखंड में टैक्सी और राइड शेयरिंग की फ्री सेवा - Purula, Barkot, Naugaon, Uttarkashi, Dehradun और Char Dham Yatra के लिए।",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR",
+        "description": "मुफ्त टैक्सी शेयरिंग प्लेटफॉर्म"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "LuhaRide",
         "url": "https://luharide.in",
-        "description": "LuhaRide offers affordable taxi booking for Purola, Barkot, and Naugaon. Book shared or private rides with local taxi union drivers.",
-        "inLanguage": "hi-IN",
-        "keywords": [
-          "taxi Purola",
-          "book taxi Purola",
-          "taxi Barkot",
-          "book taxi Barkot",
-          "taxi Naugaon",
-          "book taxi Naugaon",
-          "ride sharing Uttarakhand",
-          "affordable taxi Purola",
-          "taxi service Uttarkashi"
+        "logo": "https://luharide.in/assets/logo.png",
+        "sameAs": [
+          "https://github.com/Rahulpanwar8/luharide",
+          "https://www.instagram.com/luharide.in/"
         ],
-        "provider": {
-          "@type": "Organization",
-          "name": "LuhaRide",
-          "logo": "https://luharide.in/assets/logo.png",
-          "sameAs": ["https://www.instagram.com/luharide.in/", "https://github.com/Rahulpanwar8/luharide"],
-          "contactPoint": {
-            "@type": "ContactPoint",
-            "telephone": "+917060618851",
-            "contactType": "Customer Service",
-            "email": "luharide@gmail.com",
-            "areaServed": "IN"
-          }
-        },
-        "areaServed": [
-          {
-            "@type": "Place",
-            "name": "Purola",
-            "geo": {
-              "@type": "GeoCoordinates",
-              "latitude": "30.8751",
-              "longitude": "78.0765"
-            }
-          },
-          {
-            "@type": "Place",
-            "name": "Barkot",
-            "geo": {
-              "@type": "GeoCoordinates",
-              "latitude": "30.8086",
-              "longitude": "78.2056"
-            }
-          },
-          {
-            "@type": "Place",
-            "name": "Naugaon",
-            "geo": {
-              "@type": "GeoCoordinates",
-              "latitude": "30.7792",
-              "longitude": "78.1435"
-            }
-          }
-        ],
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "INR",
-          "description": "Free platform for taxi bookings in Purola, Barkot, and Naugaon"
-        },
-        "potentialAction": {
-          "@type": "ReserveAction",
-          "name": "Book a Taxi",
-          "target": {
-            "@type": "EntryPoint",
-            "urlTemplate": "https://luharide.in/book",
-            "inLanguage": "hi-IN",
-            "actionPlatform": [
-              "http://schema.org/MobileWebPlatform",
-              "http://schema.org/DesktopWebPlatform"
-            ]
-          },
-          "result": {
-            "@type": "Reservation",
-            "name": "Taxi Ride Reservation"
-          }
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+917060618851",
+          "contactType": "Customer Support",
+          "email": "luharide@gmail.com",
+          "areaServed": "IN"
         }
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://luharide.in/search?query={search_term_string}",
+        "query-input": "required name=search_term_string"
       }
+    }
     </script>
   </head>
   <body>
