@@ -14,6 +14,7 @@ const Technologies = () => {
   const [toSug, setToSug] = useState([]);
 
   const resultRef = useRef(null);
+  const toInputRef = useRef(null); // ✅ NEW: ref for "To" input
 
   const fetchSuggestions = async (value, field) => {
     if (field === "from_place") setFrom(value);
@@ -125,6 +126,12 @@ const Technologies = () => {
               type="text"
               placeholder="To place"
               value={to}
+              ref={toInputRef} // ✅ ref set here
+              onFocus={() => {
+                setTimeout(() => {
+                  toInputRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+                }, 200); // ✅ on focus scroll
+              }}
               onChange={(e) => fetchSuggestions(e.target.value, "to_place")}
               className={inputClass}
             />
