@@ -11,6 +11,9 @@ const Hero = () => {
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
 
+  // ✅ Step 2: Fetch email from localStorage
+  const email = localStorage.getItem("userEmail");
+
   const handleSubmit = async () => {
     if (!name || !contact || !from || !to || !date || !time || !vehicle) {
       alert("Please fill all required fields!");
@@ -20,6 +23,7 @@ const Hero = () => {
     try {
       const response = await axios.post("https://luharide.in/api/submit_ride.php", {
         name,
+        email, // ✅ send email to backend
         contact,
         whatsapp,
         vehicle,
@@ -96,7 +100,7 @@ const Hero = () => {
             type="date"
             value={date}
             onChange={(e) => setDate(e.target.value)}
-            min={new Date().toISOString().split("T")[0]}  // ✅ prevents selecting past dates
+            min={new Date().toISOString().split("T")[0]}
             className={inputClass}
           />
           <input

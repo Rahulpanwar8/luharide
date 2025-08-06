@@ -9,10 +9,25 @@ const ContactPage = () => {
   const handleLogin = (e) => {
     e.preventDefault();
 
-    if (email === "demo@user.com" && password === "123456") {
+    const validCredentials = [
+      { email: "demo@user.com", password: "123456" },
+      { email: "purolaunion@luharide.com", password: "88888888" },
+    ];
+
+    const isValid = validCredentials.some(
+      (cred) => cred.email === email && cred.password === password
+    );
+
+    if (isValid) {
+      // ✅ Store email in browser localStorage
+      localStorage.setItem("userEmail", email);
+
+      // ✅ Redirect to dashboard
       navigate("/dashboard");
     } else {
-      alert("❌ Invalid credentials.\nTry:\nEmail: demo@user.com\nPassword: 123456");
+      alert(
+        "❌ Invalid credentials.\nTry:\n\n1. demo@user.com / 123456\n2. purolaunion@luharide.com / 88888888"
+      );
     }
   };
 
