@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import { MdAccessTimeFilled, MdOutlineDateRange } from "react-icons/md";
 
 const Hero = () => {
   const [name, setName] = useState("");
@@ -11,7 +12,6 @@ const Hero = () => {
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
 
-  // ✅ Step 2: Fetch email from localStorage
   const email = localStorage.getItem("userEmail");
 
   const handleSubmit = async () => {
@@ -23,7 +23,7 @@ const Hero = () => {
     try {
       const response = await axios.post("https://luharide.in/api/submit_ride.php", {
         name,
-        email, // ✅ send email to backend
+        email,
         contact,
         whatsapp,
         vehicle,
@@ -33,17 +33,17 @@ const Hero = () => {
         time,
       });
 
-      alert(response.data.message);
+      alert("✅ आपका फॉर्म सफलतापूर्वक सबमिट हो गया है!");
       setName(""); setContact(""); setWhatsapp(""); setVehicle("");
       setFrom(""); setTo(""); setDate(""); setTime("");
     } catch (error) {
-      alert("Failed to submit ride. Check console.");
+      alert("❌ फॉर्म सबमिट नहीं हुआ।");
       console.error(error);
     }
   };
 
   const inputClass =
-    "w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 font-semibold text-[15px]";
+    "w-full px-4 py-3 pr-10 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 font-semibold text-[15px]";
 
   return (
     <div className="min-h-screen w-full bg-black text-white px-4 py-10 flex flex-col items-center font-sans">
@@ -95,20 +95,32 @@ const Hero = () => {
           className={inputClass}
         />
 
+        {/* ✅ Updated Date and Time inputs with icons inside */}
         <div className="flex flex-col sm:flex-row gap-4">
-          <input
-            type="date"
-            value={date}
-            onChange={(e) => setDate(e.target.value)}
-            min={new Date().toISOString().split("T")[0]}
-            className={inputClass}
-          />
-          <input
-            type="time"
-            value={time}
-            onChange={(e) => setTime(e.target.value)}
-            className={inputClass}
-          />
+          {/* Date Input */}
+          <div className="relative w-full">
+            <input
+              type="date"
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
+              min={new Date().toISOString().split("T")[0]}
+              className={inputClass}
+              placeholder="Select Date"
+            />
+            <MdOutlineDateRange className="absolute right-3 top-3.5 text-cyan-400 text-xl pointer-events-none" />
+          </div>
+
+          {/* Time Input */}
+          <div className="relative w-full">
+            <input
+              type="time"
+              value={time}
+              onChange={(e) => setTime(e.target.value)}
+              className={inputClass}
+              placeholder="Select Time"
+            />
+            <MdAccessTimeFilled className="absolute right-3 top-3.5 text-cyan-400 text-xl pointer-events-none" />
+          </div>
         </div>
 
         <button

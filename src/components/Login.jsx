@@ -9,10 +9,19 @@ const ContactPage = () => {
   const handleLogin = (e) => {
     e.preventDefault();
 
-    if (email === "demo@user.com" && password === "123456") {
+    const validCredentials = [
+      { email: "admintechmcu@luharide.in", password: "R@#ul1078" },
+      { email: "purolataxiu@luharide.in", password: "PuRol@1078562@techMcu" },
+    ];
+
+    const isValid = validCredentials.some(
+      (cred) => cred.email === email && cred.password === password
+    );
+
+    if (isValid) {
       navigate("/dashboard");
     } else {
-      alert("❌ Invalid credentials.\nTry:\nEmail: demo@user.com\nPassword: 123456");
+      alert("❌ गलत ईमेल या पासवर्ड। कृपया पुनः प्रयास करें।");
     }
   };
 
