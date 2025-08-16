@@ -1,10 +1,9 @@
 const TaxiUnion = () => {
   const contactList = [
-    { name: "Purola", number: "+91-9999911111" },
-    { name: "Barkot", number: "+91-8888822222" },
-    { name: "Naugaon", number: "+91-7777733333" },
-    { name: "Dehradun", number: "+91-6666644444" },
-    { name: "Chamoli", number: "+91-5555511111" },
+    { name: "Purola", number: "+918126123453" },
+    { name: "Barkot", number: "+919411146494" },
+    { name: "Naugaon", number: "+919760742647" },
+    
   ];
 
   return (

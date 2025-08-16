@@ -13,6 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 
 $data = json_decode(file_get_contents("php://input"), true);
 
+// Fields
 $name     = trim($data['name'] ?? '');
 $contact  = trim($data['contact'] ?? '');
 $whatsapp = trim($data['whatsapp'] ?? '');
@@ -21,21 +22,24 @@ $from     = trim($data['from'] ?? '');
 $to       = trim($data['to'] ?? '');
 $date     = trim($data['date'] ?? '');
 $time     = trim($data['time'] ?? '');
+$email    = trim($data['email'] ?? '');  // 👈 new field
 
-if (!$name || !$contact || !$vehicle || !$from || !$to || !$date || !$time) {
+// Basic validation
+if (!$name || !$contact || !$vehicle || !$from || !$to || !$date || !$time || !$email) {
     http_response_code(400);
     echo json_encode(["message" => "All required fields must be filled."]);
     exit;
 }
 
+// Insert query
 $sql = "INSERT INTO rides 
-        (name, contact_number, whatsapp_number, vehicle_number, from_place, to_place, ride_date, ride_time) 
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        (name, contact_number, whatsapp_number, vehicle_number, from_place, to_place, ride_date, ride_time, email) 
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 $stmt = $conn->prepare($sql);
 $stmt->bind_param(
-    "ssssssss",
-    $name, $contact, $whatsapp, $vehicle, $from, $to, $date, $time
+    "sssssssss",
+    $name, $contact, $whatsapp, $vehicle, $from, $to, $date, $time, $email
 );
 
 if ($stmt->execute()) {
